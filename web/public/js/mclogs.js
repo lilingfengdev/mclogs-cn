@@ -63,6 +63,7 @@ async function sendLog() {
             .split('\n').slice(0, parseInt(pasteArea.dataset.maxLines)).join('\n');
 
         const response = await fetch(`${location.protocol}//api.${location.host}/1/log`, {
+            mode: 'no-cors',
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
