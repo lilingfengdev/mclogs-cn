@@ -1,4 +1,4 @@
-const titles = ["Paste", "Share", "Analyse"];
+const titles = ["粘贴", "分享", "分析"];
 let currentTitle = 0;
 let speed = 30;
 let pause = 3000;
@@ -82,27 +82,27 @@ async function sendLog() {
             data = await response.json();
         }
         catch (e) {
-            console.error("Failed to parse JSON returned by API", e);
-            handleUploadError("API returned invalid JSON");
+            console.error("无法解析API返回的JSON", e);
+            handleUploadError("API返回了无效的JSON");
             return;
         }
 
         if (typeof data === 'object' && !data.success && data.error) {
-            console.error(new Error("API returned an error"), data.error);
+            console.error(new Error("API返回了一个错误"), data.error);
             handleUploadError(data.error);
             return;
         }
 
         if (typeof data !== 'object' || !data.success || !data.id) {
-            console.error(new Error("API returned an invalid response"), data);
-            handleUploadError("API returned an invalid response");
+            console.error(new Error("API返回了一个无效的响应"), data);
+            handleUploadError("API返回了一个无效的响应");
             return;
         }
 
         location.href = `/${data.id}`;
     }
     catch (e) {
-        handleUploadError("Network error");
+        handleUploadError("网络错误");
     }
 }
 
@@ -112,7 +112,7 @@ async function sendLog() {
  * @return {void}
  */
 function handleUploadError(reason = null) {
-    showPasteError(reason ?? "Unknown error");
+    showPasteError(reason ?? "未知错误");
     pasteSaveButtons.forEach(button => button.classList.remove("btn-working"));
 }
 
@@ -129,7 +129,7 @@ function showPasteError(message) {
     for (const parent of [pasteHeader, pasteFooter]) {
         const pasteError = document.createElement('div');
         pasteError.classList.add('paste-error');
-        pasteError.innerText = `Failed to save log: ${message}`;
+        pasteError.innerText = `保存日志失败: ${message}`;
 
         parent.insertBefore(pasteError, parent.querySelector('.paste-save'));
     }

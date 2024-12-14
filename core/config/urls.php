@@ -7,7 +7,7 @@ $config = [
      *
      * Should not end with a slash
      */
-    "baseUrl" => "https://mclo.gs",
+    "baseUrl" => "https://log.yizhan.wiki",
 
     /**
      * The base URL for the API

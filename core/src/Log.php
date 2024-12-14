@@ -24,6 +24,8 @@ use Cache\CacheEntry;
 use Printer\Printer;
 use Storage\StorageInterface;
 
+Aternos\Codex\Minecraft\Translator\Translator::getInstance()->setLanguage("zh-CN");
+
 class Log
 {
     private bool $exists = false;

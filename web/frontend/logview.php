@@ -5,10 +5,10 @@ $id = new Id(substr($_SERVER['REQUEST_URI'], 1));
 $log = new Log($id);
 $shouldWrapLogLines = filter_var($_COOKIE["WRAP_LOG_LINES"] ?? "true", FILTER_VALIDATE_BOOLEAN);
 
-$title = "mclo.gs - Paste, share & analyse your Minecraft logs";
-$description = "Easily paste your Minecraft logs to share and analyse them.";
+$title = "mclo.gs - 粘贴、分享并分析你的Minecraft日志";
+$description = "轻松粘贴你的Minecraft日志以分享和分析。";
 if (!$log->exists()) {
-    $title = "Log not found - mclo.gs";
+    $title = "日志未找到 - mclo.gs";
     http_response_code(404);
 } else {
     $codexLog = $log->get();
@@ -84,13 +84,13 @@ if (!$log->exists()) {
                 </a>
                 <div class="menu">
                     <a class="menu-item" href="/#info">
-                        <i class="fa fa-info-circle"></i> Info
+                        <i class="fa fa-info-circle"></i> 信息
                     </a>
                     <a class="menu-item" href="/#plugin">
-                        <i class="fa fa-database"></i> Plugin
+                        <i class="fa fa-database"></i> 插件
                     </a>
                     <a class="menu-item" href="/#mod">
-                        <i class="fa fa-puzzle-piece"></i> Mod
+                        <i class="fa fa-puzzle-piece"></i> 模组
                     </a>
                     <a class="menu-item" href="/#api">
                         <i class="fa fa-code"></i> API
@@ -154,12 +154,12 @@ if (!$log->exists()) {
                                                 </div>
                                                 <?php $number = $problem->getEntry()[0]->getNumber(); ?>
                                                 <a href="/<?=$id->get() . "#L" . $number; ?>" class="btn btn-blue btn-no-margin btn-small" onclick="updateLineNumber('#L<?=$number; ?>');">
-                                                    <span class="hide-mobile"><i class="fa fa-arrow-right"></i> Line </span>#<?=$number; ?>
+                                                    <span class="hide-mobile"><i class="fa fa-arrow-right"></i> 行 </span>#<?=$number; ?>
                                                 </a>
                                             </div>
                                             <div class="problem-body">
                                                 <div class="problem-solution-headline">
-                                                    Solutions
+                                                    解决方案
                                                 </div>
                                                 <div class="problem-solution-list">
                                                     <?php foreach($problem->getSolutions() as $solution): ?>
@@ -188,31 +188,30 @@ if (!$log->exists()) {
                     </div>
                     <div class="checkbox-container">
                         <input type="checkbox" id="wrap-checkbox"<?=$shouldWrapLogLines ? " checked" : ""?>/>
-                        <label for="wrap-checkbox">Wrap log lines</label>
+                        <label for="wrap-checkbox">包装日志行</label>
                     </div>
                 </div>
                 <div class="log-notice">
-                    This log will be saved for 90 days from their last view.<br />
-                    <a href="mailto:<?=$legal['abuseEmail']?>?subject=Report%20mclo.gs/<?=$id->get(); ?>">Report abuse</a>
+                    此日志将从他们最后一次查看起保存90天.<br />
+                    <a href="mailto:<?=$legal['abuseEmail']?>?subject=Report%20mclo.gs/<?=$id->get(); ?>">举报滥用</a>
                 </div>
                 <?php else: ?>
-                <div class="not-found">
-                    <div class="not-found-title">404 - Log not found.</div>
-                    <div class="not-found-text">The log you try to open does not exist (anymore).<br />We automatically delete all logs that weren't opened in the last 90 days.</div>
-                    <div class="not-found-buttons">
-                        <a href="/" class="btn btn-no-margin btn-blue btn-small">
-                            <i class="fa fa-home"></i> Paste a new log
-                        </a>
-                    </div>
-                </div>
+                <div class="not-found-title">404 - 日志未找到。</div>
+                <div class="not-found-text">您尝试打开的日志不存在（或已被删除）。<br />我们自动删除过去90天内未被打开的所有日志。</div>
+                <div class="not-found-buttons">
+                    <a href="/" class="btn btn-no-margin btn-blue btn-small">
+                        <i class="fa fa-home"></i> 粘贴新日志
+                    </a>
+                   </div>
+                </div>`
                 <?php endif; ?>
             </div>
         </div>
         <div class="row footer">
             <div class="row-inner">
-                &copy; 2017-<?=date("Y"); ?> by mclo.gs - a service by <a target="_blank" href="https://aternos.org">Aternos</a> |
-                <a target="_blank" href="<?=$legal['imprint']?>">Imprint</a> |
-                <a target="_blank" href="<?=$legal['privacy']?>">Privacy</a>
+                版权所有 © 2017-<?=date("Y"); ?> by mclo.gs - 中文翻译所有 8aka Team 由 <a target="_blank" href="https://yizhan.wiki">8aka-Team</a> 提供的服务 |
+                <a target="_blank" href="<?=$legal['imprint']?>">法律声明</a> |
+                <a target="_blank" href="<?=$legal['privacy']?>">隐私政策</a>
             </div>
         </div>
         <script src="js/logview.js?v=130221"></script>
