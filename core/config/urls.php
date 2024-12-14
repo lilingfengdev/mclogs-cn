@@ -14,6 +14,6 @@ $config = [
      *
      * Should not end with a slash
      */
-    "apiBaseUrl" => "https://api.mclo.gs",
+    "apiBaseUrl" => "https://api.log.yizhan.wiki",
 
 ];
